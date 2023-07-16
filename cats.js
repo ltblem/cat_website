@@ -17,9 +17,8 @@ function ajax_get(url, callback) {
     xmlhttp.send();
 }
   
-ajax_get('https://api.thecatapi.com/v1/images/search?size=' + window.innerWidth + 'x' + window.innerHeight, function(data) {
+ajax_get('https://api.thecatapi.com/v1/images/search?size=full', function(data) {
     var html = '<img src="' + data[0]["url"] + '">';
     document.getElementById("image").innerHTML = html;
 });
-
-// TODO: fix image width and height
+  
