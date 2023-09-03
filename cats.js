@@ -1,3 +1,38 @@
+
+const urlParams = new URLSearchParams(window.location.search);
+var stretch
+var help
+const helpstring = 'Press \'s\' to toggle stretch fill, press \'h\' to toggle this help message.'
+
+if (urlParams.get("stretch") == "true") {
+    stretch = true;
+    console.log('dbg: stretch is true')
+} else if (urlParams.get("stretch") == "false") {
+    stretch = false;
+    console.log('dbg: stretch is false')
+} else {
+    stretch = false;
+    console.log('dbg: stretch param is invalid or missing, but this is fine; setting stretch to false')
+}
+
+if (urlParams.get("help") == "true") {
+    help = true;
+    console.log('dbg: help is true')
+} else if (urlParams.get("help") == "false") {
+    help = false;
+    console.log('dbg: help is false')
+} else {
+    help = true;
+    console.log('dbg: help param is invalid or missing, but this is fine; setting help to true')
+}
+
+if (help) {
+    document.write('<p style="color: white; font-family: monospace; height: 5px;">' + helpstring + '</p>\n<div id="image"></div>')
+} else if (!help) {
+    document.write('<div id="image"></div>')
+}
+
+
 function ajax_get(url, callback) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -19,8 +54,31 @@ function ajax_get(url, callback) {
 
 
 ajax_get('https://api.thecatapi.com/v1/images/search?api_key=live_W2PxBHqGJN8L6WZ2NNOcGPvflkQ6OTOiTTYTY0X4KD41Zj3r0PRFyPdyr9P4RzE5', function(data) {
-    var html = '<img src="' + data[0]["url"] + '">';
+    if (stretch) {
+        var html = '<img src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + window.innerHeight + '>';
+    } else if (!stretch) {
+        var html = '<img src="' + data[0]["url"] + '">';
+    }
     document.getElementById("image").innerHTML = html;
 });
+
+
+document.onkeydown = function(e) {
+    if (e.key == "s" || e.key == "S") {
+        if (stretch) {
+            urlParams.set("stretch", "false")
+        } else if (!stretch) {
+            urlParams.set("stretch", "true")
+        }
+    } else if (e.key == "h" || e.key == "H") {
+        if (help) {
+            urlParams.set("help", "false")
+        } else if (!help) {
+            urlParams.set("help", "true")
+        }
+    }
+
+    window.location.replace(window.location.href.split('?')[0] + '?' + urlParams.toString());
+}
 
 //TODO: Make the returned image the correct aspect ratio
