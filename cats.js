@@ -1,10 +1,14 @@
+// cats.js - A LetThereBeLemons creation (part of https://github.com/ltblem/cat_webiste/)
+// Liscenced under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
+
 //TODO: Make the returned image the correct aspect ratio
 
-const urlParams = new URLSearchParams(window.location.search);
+const urlParams = new URLSearchParams(window.location.search); // Setting URL parameters (like /?help=true) into a vaiable
 var stretch
 var help
-const helpstring = 'Press \'s\' to toggle stretch fill, press \'h\' to toggle this help message, press space to reload.'
+const helpstring = 'Press \'s\' to toggle stretch fill, press \'h\' to toggle this help message, press enter to reload.'
 
+// Checking the URL parameters and assigning relevant variables to be used later
 if (urlParams.get("stretch") == "true") {
     stretch = true;
     console.log('dbg: main: stretch is true')
@@ -33,7 +37,7 @@ if (help) {
     document.write('<div id="image"></div>\n</body>\n</html>')
 }
 
-
+// we create the ajax_get function, which creates and sends the request for data
 function ajax_get(url, callback) {
     console.log('dbg: ajax_get: forming request...')
     var xmlhttp = new XMLHttpRequest();
@@ -55,19 +59,22 @@ function ajax_get(url, callback) {
     console.log('dbg: ajax_get: request sent')
 }
 
+// we then call the function...
 console.log('dbg: main: calling ajax_get')
 ajax_get('https://api.thecatapi.com/v1/images/search?api_key=live_W2PxBHqGJN8L6WZ2NNOcGPvflkQ6OTOiTTYTY0X4KD41Zj3r0PRFyPdyr9P4RzE5', function(data) {
     console.log('dbg: main: ajax_get data recieved')
+    // ...parse the data into HTML...
     if (stretch) {
         var html = '<img src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + window.innerHeight + '>';
     } else if (!stretch) {
         var html = '<img src="' + data[0]["url"] + '">';
     }
+    // ...and write it to the page.
     document.getElementById("image").innerHTML = html;
     console.log('dbg: main: html written')
 });
 
-
+// here we are checking for keypresses and changing the URL parameters accordingly
 document.onkeydown = function(e) {
     console.log('dbg: main: keypress detected')
     if (e.key == "s" || e.key == "S") {
@@ -84,7 +91,7 @@ document.onkeydown = function(e) {
             urlParams.set("help", "true")
         }
         window.location.replace(window.location.href.split('?')[0] + '?' + urlParams.toString());
-    } else if (e.key == " ") {
+    } else if (e.key == "Enter") {
         window.location.reload();
     }
    
