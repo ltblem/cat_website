@@ -28,18 +28,18 @@ if (urlParams.get("help") == "true") {
 }
 
 if (help) {
-    document.write('<p style="color: white; font-family: monospace; height: 5px;">' + helpstring + '</p>\n<div id="image"></div>\n</body>')
+    document.write('<p style="color: white; font-family: monospace; height: 5px;">' + helpstring + '</p>\n<div id="image"></div>\n</body>\n</html>')
 } else if (!help) {
-    document.write('<div id="image"></div>\n</body>')
+    document.write('<div id="image"></div>\n</body>\n</html>')
 }
 
 
 function ajax_get(url, callback) {
-    console.log('dbg: ajax_get: running ajax_get...')
+    console.log('dbg: ajax_get: forming request...')
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            console.log('responseText:' + xmlhttp.responseText);
+            console.log('dbg: ajax_get: responseText:' + xmlhttp.responseText);
             try {
                 var data = JSON.parse(xmlhttp.responseText);
             } catch (err) {
@@ -55,8 +55,9 @@ function ajax_get(url, callback) {
     console.log('dbg: ajax_get: request sent')
 }
 
-
+console.log('dbg: main: calling ajax_get')
 ajax_get('https://api.thecatapi.com/v1/images/search?api_key=live_W2PxBHqGJN8L6WZ2NNOcGPvflkQ6OTOiTTYTY0X4KD41Zj3r0PRFyPdyr9P4RzE5', function(data) {
+    console.log('dbg: main: ajax_get data recieved')
     if (stretch) {
         var html = '<img src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + window.innerHeight + '>';
     } else if (!stretch) {
