@@ -32,9 +32,9 @@ if (urlParams.get("help") == "true") {
 }
 
 if (help) {
-    document.write('<p style="color: white; font-family: monospace; height: 5px;">' + helpstring + '</p>\n<div id="image"></div>\n</body>\n</html>')
+    document.write('<p style="color: white; font-family: monospace; height: 5px;">' + helpstring + '</p>\n<div id="imagecontainer"></div>\n</body>\n</html>')
 } else if (!help) {
-    document.write('<div id="image"></div>\n</body>\n</html>')
+    document.write('<div id="imagecontainer"></div>\n</body>\n</html>')
 }
 
 // we create the ajax_get function, which creates and sends the request for data
@@ -63,16 +63,19 @@ function ajax_get(url, callback) {
 console.log('dbg: main: calling ajax_get')
 ajax_get('https://api.thecatapi.com/v1/images/search?api_key=live_W2PxBHqGJN8L6WZ2NNOcGPvflkQ6OTOiTTYTY0X4KD41Zj3r0PRFyPdyr9P4RzE5', function(data) {
     console.log('dbg: main: ajax_get data recieved')
+    document.getElementById('image')
     // ...parse the data into HTML...
     if (stretch) {
-        var html = '<img src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + window.innerHeight + '>';
+        var html = '<img id="image" src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + window.innerHeight + '; id="image">';
     } else if (!stretch) {
-        var html = '<img src="' + data[0]["url"] + '">';
+        var html = '<img id="image" src="' + data[0]["url"] + '">';
     }
     // ...and write it to the page.
-    document.getElementById("image").innerHTML = html;
+    document.getElementById("imagecontainer").innerHTML = html;
     console.log('dbg: main: html written')
+
 });
+
 
 // here we are checking for keypresses and changing the URL parameters accordingly
 document.onkeydown = function(e) {
