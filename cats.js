@@ -65,8 +65,11 @@ ajax_get('https://api.thecatapi.com/v1/images/search?api_key=live_W2PxBHqGJN8L6W
     console.log('dbg: main: ajax_get data recieved')
     document.getElementById('image')
     // ...parse the data into HTML...
-    if (stretch) {
+    if (stretch && !help) {
         var html = '<img id="image" src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + window.innerHeight + '; id="image">';
+    } else if (stretch && help) {
+        var html = '<img id="image" src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + (window.innerHeight - 34) + '; id="image">';
+        console.log('dbg: stretched image has been squished slightly due to help text, to avoid scrollbar')
     } else if (!stretch) {
         var html = '<img id="image" src="' + data[0]["url"] + '">';
     }
