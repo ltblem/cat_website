@@ -37,6 +37,10 @@ if (help) {
     document.write('<div id="imagecontainer"></div>\n</body>\n</html>')
 }
 
+function cat_loaded() {
+    console.log('dbg: cat_loaded: loaded')
+}
+
 // we create the ajax_get function, which creates and sends the request for data
 function ajax_get(url, callback) {
     console.log('dbg: ajax_get: forming request...')
@@ -66,12 +70,12 @@ ajax_get('https://api.thecatapi.com/v1/images/search?api_key=live_W2PxBHqGJN8L6W
     document.getElementById('image')
     // ...parse the data into HTML...
     if (stretch && !help) {
-        var html = '<img id="image" src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + window.innerHeight + '; id="image">';
+        var html = '<img id="image" src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + window.innerHeight + ' onload="cat_loaded()">';
     } else if (stretch && help) {
-        var html = '<img id="image" src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + (window.innerHeight - 34) + '; id="image">';
+        var html = '<img id="image" src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + (window.innerHeight - 34) + ' onload="cat_loaded()">';
         console.log('dbg: stretched image has been squished slightly due to help text, to avoid scrollbar')
     } else if (!stretch) {
-        var html = '<img id="image" src="' + data[0]["url"] + '">';
+        var html = '<img id="image" src="' + data[0]["url"] + '" onload="cat_loaded()">';
     }
     // ...and write it to the page.
     document.getElementById("imagecontainer").innerHTML = html;
