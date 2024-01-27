@@ -1,18 +1,19 @@
 // cats.js - A LetThereBeLemons creation (part of https://github.com/ltblem/cat_webiste/ or https://cat-website.pages.dev/)
 // Liscenced under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
 
-const version = '0.1.4'
-const versionstring = 'the `blake` update.'
+const version = '0.1.5'
+const versionstring = 'the `b****` update.'
 //TODO: Make the returned image the correct aspect ratio
 
 //* This is the amount of `custom` images, change as necessary.
 var AmountCustomTotal = 48
+// Their filenames are numbered, starting from 0.
 
 const urlParams = new URLSearchParams(window.location.search); // Setting URL parameters (like /?help=true) into a vaiable
 var stretch;
 var help;
 var custom;
-const helpstring = 'Press \'s\' to toggle stretch fill, \'h\' to toggle this help message, \'c\' to switch to only James Blake\'s cat, enter to reload. Running cats.js v' + version + ', ' + versionstring + ' https://github.com/ltblem/cat_webiste/';
+const helpstring = 'Press \'s\' to toggle stretch fill, \'h\' to toggle this help message, \'c\' to switch to only Jamesie\'s cat, enter to reload. Running cats.js v' + version + ', ' + versionstring + ' https://github.com/ltblem/cat_webiste/';
 
 // Checking the URL parameters and assigning relevant variables to be used later
 if (urlParams.get("stretch") == "true") {
