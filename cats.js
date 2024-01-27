@@ -2,9 +2,12 @@
 // Liscenced under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
 // contact - jamsieh@icloud.com | https://github.com/ltblem/
 
-const version = '0.2.1'
+const version = 'd0.2.2'
 const versionstring = 'the `b****y+++` update.'
-//TODO: Make the returned image the correct aspect ratio (if possible)
+/*
+TODO: Make the returned image the correct aspect ratio (if possible)
+TODO: Make the text at the top of the screen consume the right amount of space
+*/
 
 //* This is the amount of `custom` images, change as necessary.
 const AmountCustomTotal = 54
