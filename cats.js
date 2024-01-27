@@ -1,19 +1,25 @@
 // cats.js - A LetThereBeLemons creation (part of https://github.com/ltblem/cat_webiste/ or https://cat-website.pages.dev/)
 // Liscenced under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
+// contact - jamsieh@icloud.com | https://github.com/ltblem/
 
-const version = '0.1.5'
-const versionstring = 'the `b****` update.'
-//TODO: Make the returned image the correct aspect ratio
+const version = '0.2.1'
+const versionstring = 'the `b****y+++` update.'
+//TODO: Make the returned image the correct aspect ratio (if possible)
 
 //* This is the amount of `custom` images, change as necessary.
-var AmountCustomTotal = 48
+const AmountCustomTotal = 54
 // Their filenames are numbered, starting from 0.
+
+//* This is the chance that a `custom` image is shown, even when the `custom` switch is disabled.
+const customChance = 0.05 // 5% chance
+// This is a float between 0 (incl.) and 1 (excl.)
 
 const urlParams = new URLSearchParams(window.location.search); // Setting URL parameters (like /?help=true) into a vaiable
 var stretch;
 var help;
 var custom;
-const helpstring = 'Press \'s\' to toggle stretch fill, \'h\' to toggle this help message, \'c\' to switch to only Jamesie\'s cat, enter to reload. Running cats.js v' + version + ', ' + versionstring + ' https://github.com/ltblem/cat_webiste/';
+var customTemp = false;
+const helpstring = 'Press \'s\' to toggle stretch fill, \'h\' to toggle this help message, \'c\' to switch to only custom cats, enter to reload. Running cats.js v' + version + ', ' + versionstring + ' https://github.com/ltblem/cat_webiste/ || NEW update 0.2 adds a chance to see custom cats without enabling \'custom\'!';
 
 // Checking the URL parameters and assigning relevant variables to be used later
 if (urlParams.get("stretch") == "true") {
@@ -49,8 +55,14 @@ if (urlParams.get("custom") == "true") {
     console.log('dbg: main: custom param is invalid or missing, but this is fine; setting custom to false, OK')
 }
 
-if (help) {
-    document.write('<p style="color: white; font-family: monospace; height: 5px;">' + helpstring + '</p>\n<div id="imagecontainer"></div>\n</body>\n</html>')
+// Let's make a random chance for custom images to show up anyway
+if (Math.random() < customChance) {
+    customTemp = true;
+    console.log('dbg: main: customTemp is true, OK')
+}
+
+if (help) { // this document.write() is a bit jank, text spacing is constant, ew. 50px is about 3 lines of text, so that's the max until this is fixed.
+    document.write('<p style="color: white; font-family: monospace; height: 50px;">' + helpstring + '</p>\n<div id="imagecontainer"></div>\n</body>\n</html>')
 } else if (!help) {
     document.write('<div id="imagecontainer"></div>\n</body>\n</html>')
 }
@@ -82,7 +94,7 @@ function ajax_get(url, callback) {
 }
 
 // we then call the function... (but only if `custom` is false)
-if (custom == false) {
+if (custom == false && customTemp == false) {
     console.log('dbg: main: calling ajax_get')
     ajax_get('https://api.thecatapi.com/v1/images/search?api_key=live_W2PxBHqGJN8L6WZ2NNOcGPvflkQ6OTOiTTYTY0X4KD41Zj3r0PRFyPdyr9P4RzE5', function(data) {
         console.log('dbg: main: ajax_get data recieved, OK')
@@ -91,7 +103,7 @@ if (custom == false) {
         if (stretch && !help) {
             var html = '<img id="image" src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + window.innerHeight + '    onload="cat_loaded()">';
         } else if (stretch && help) {
-            var html = '<img id="image" src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + (window.innerHeight - 34) + '     onload="cat_loaded()">';
+            var html = '<img id="image" src="' + data[0]["url"] + '"; width=' + window.innerWidth + '; height=' + (window.innerHeight - 84) + '     onload="cat_loaded()">';
             console.log('dbg: stretched image has been squished slightly due to help text, to avoid scrollbar, OK')
         } else if (!stretch) {
             var html = '<img id="image" src="' + data[0]["url"] + '" onload="cat_loaded()">';
@@ -100,9 +112,9 @@ if (custom == false) {
         document.getElementById("imagecontainer").innerHTML = html;
         console.log('dbg: main: html written, OK!')
 
-})} else if (custom == true) { // HOWEVER if `custom` is true...
+})} else if (custom == true || customTemp == true) { // HOWEVER if `custom` is true...
     // we draw a random image from ./custom/ and put that on the screen instead.
-    // They will be named with numbers (0-*)
+    // They will be named with numbers (0-*).jpeg
     console.log('dbg: main: custom selected, picking image...')
     var imgsource = "./custom/" + Math.floor(Math.random() * (AmountCustomTotal - 1)) + ".jpeg";
     console.log('dbg: custom: image selection made, OK')
