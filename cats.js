@@ -2,7 +2,7 @@
 // Liscenced under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
 // contact - jamsieh@icloud.com | https://github.com/ltblem/
 
-const version = 'd0.2.2'
+const version = '0.2.2'
 const versionstring = 'the `b****y+++` update.'
 /*
 TODO: Make the returned image the correct aspect ratio (if possible)
@@ -14,7 +14,7 @@ const AmountCustomTotal = 54
 // Their filenames are numbered, starting from 0.
 
 //* This is the chance that a `custom` image is shown, even when the `custom` switch is disabled.
-const customChance = 0.05 // 5% chance
+const customChance = 0.1 // 5% chance
 // This is a float between 0 (incl.) and 1 (excl.)
 
 const urlParams = new URLSearchParams(window.location.search); // Setting URL parameters (like /?help=true) into a vaiable
