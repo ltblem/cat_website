@@ -2,16 +2,24 @@
 // Liscenced under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
 // contact - jamsieh@icloud.com | https://github.com/ltblem/
 
-const version = '0.2.1'
+const version = '<b style="color:orange">0.2.2</b>'
 const versionstring = 'the `b****y+++` update.'
-//TODO: Make the returned image the correct aspect ratio (if possible)
+const poptext = '<b style="color: cyan">Updated to 0.2.2.</b> Currently a 10% chance to see custom cats. Also enjoy the <b style="color: pink">fancy text</b>.'
+
+/*
+!     We haven't recieved Br's pics yet, so 0.2.2 was pushed early. Remove this when we get the pics.
+?     Do we need a better way of storing custom pics?
+TODO: Make the returned image the correct aspect ratio (if possible)
+TODO: Make the helptext at the top of the screen consume the right amount of space, AND/OR...
+TODO: Add toggleable, overlayed buttons and text over image for existing functions 
+*/
 
 //* This is the amount of `custom` images, change as necessary.
 const AmountCustomTotal = 54
 // Their filenames are numbered, starting from 0.
 
 //* This is the chance that a `custom` image is shown, even when the `custom` switch is disabled.
-const customChance = 0.05 // 5% chance
+const customChance = 0.1 // 10% chance
 // This is a float between 0 (incl.) and 1 (excl.)
 
 const urlParams = new URLSearchParams(window.location.search); // Setting URL parameters (like /?help=true) into a vaiable
@@ -19,7 +27,7 @@ var stretch;
 var help;
 var custom;
 var customTemp = false;
-const helpstring = 'Press \'s\' to toggle stretch fill, \'h\' to toggle this help message, \'c\' to switch to only custom cats, enter to reload. Running cats.js v' + version + ', ' + versionstring + ' https://github.com/ltblem/cat_webiste/ || NEW update 0.2 adds a chance to see custom cats without enabling \'custom\'!';
+const helpstring = 'Press \'s\' to toggle stretch fill, \'h\' to toggle this help message, \'c\' to switch to only custom cats, enter to reload. Running cats.js v' + version + ', ' + versionstring + ' https://github.com/ltblem/cat_webiste/ || ' + poptext;
 
 // Checking the URL parameters and assigning relevant variables to be used later
 if (urlParams.get("stretch") == "true") {
@@ -61,7 +69,7 @@ if (Math.random() < customChance) {
     console.log('dbg: main: customTemp is true, OK')
 }
 
-if (help) { // this document.write() is a bit jank, text spacing is constant, ew. 50px is about 3 lines of text, so that's the max until this is fixed.
+if (help) { // this document.write() is a bit jank, text spacing is constant, ew. 50px is generally about 3 lines of text, so that's the max until this is fixed.
     document.write('<p style="color: white; font-family: monospace; height: 50px;">' + helpstring + '</p>\n<div id="imagecontainer"></div>\n</body>\n</html>')
 } else if (!help) {
     document.write('<div id="imagecontainer"></div>\n</body>\n</html>')
@@ -136,7 +144,7 @@ if (custom == false && customTemp == false) {
 
 // here we are checking for keypresses and changing the URL parameters accordingly
 document.onkeydown = function(e) {
-    console.log('dbg: main: keypress detected')
+    console.log('dbg: main: keypress detected: ' + e.key)
     if (e.key == "s" || e.key == "S") {
         if (stretch) {
             urlParams.set("stretch", "false")
