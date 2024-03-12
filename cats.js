@@ -7,7 +7,7 @@ const versionstring = 'the `b****y+++` update.'
 const poptext = '<b style="color: cyan">Updated to 0.2.2.</b> Currently a 10% chance to see custom cats. Also enjoy the <b style="color: pink">fancy text</b>.'
 
 /*
-!     We haven't recieved B's pics yet, so 0.2.2 was pushed early. Remove this when we get the pics.
+!     We haven't recieved Br's pics yet, so 0.2.2 was pushed early. Remove this when we get the pics.
 ?     Do we need a better way of storing custom pics?
 TODO: Make the returned image the correct aspect ratio (if possible)
 TODO: Make the helptext at the top of the screen consume the right amount of space, AND/OR...
