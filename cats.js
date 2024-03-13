@@ -2,13 +2,14 @@
 // Liscenced under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
 // contact - jamsieh@icloud.com | https://github.com/ltblem/
 
-const version = '<b style="color:orange">0.2.2</b>'
-const versionstring = 'the `b****y+++` update.'
-const poptext = '<b style="color: cyan">Updated to 0.2.2.</b> Currently a 10% chance to see custom cats. Also enjoy the <b style="color: pink">fancy text</b>.'
+const version = '<b style="color:lime">0.2.3</b>'
+const versionstring = '<b style="color:green">the `b****y+++` update</b>.'
+const poptext = '<b style="color:lime">Updated to 0.2.3.</b> <b style="color:red">This is a development build. Do not ship.</b>'
 
 /*
 !     We haven't recieved Br's pics yet, so 0.2.2 was pushed early. Remove this when we get the pics.
 ?     Do we need a better way of storing custom pics?
+TODO: Add a way to see a few of the previous images, if the user wants to see an image they skipped
 TODO: Make the returned image the correct aspect ratio (if possible)
 TODO: Make the helptext at the top of the screen consume the right amount of space, AND/OR...
 TODO: Add toggleable, overlayed buttons and text over image for existing functions 
@@ -19,7 +20,7 @@ const AmountCustomTotal = 54
 // Their filenames are numbered, starting from 0.
 
 //* This is the chance that a `custom` image is shown, even when the `custom` switch is disabled.
-const customChance = 0.1 // 10% chance
+const customChance = 0.075 // 7.5% chance
 // This is a float between 0 (incl.) and 1 (excl.)
 
 const urlParams = new URLSearchParams(window.location.search); // Setting URL parameters (like /?help=true) into a vaiable
