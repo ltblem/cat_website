@@ -4,7 +4,7 @@
 
 const version = '<b style="color:lime">v0.3.0</b>'
 const versionstring = '<b style="color:lime">v0.3.0</b>, <b style="color:cyan">the `BINGO` update</b>.'
-const poptext = '<b style="color:lime">Updated to 0.3.0.</b> <b style="color:red">This is a development build. Do not ship.</b>'
+const poptext = '<b style="color:lime">Updated to 0.3.0.</b> <b style="color:orange">Press `b` to open bingo!</b>'
 
 const bingolink = 'https://bingobaker.com/#65f35093d64eaa05'
 
