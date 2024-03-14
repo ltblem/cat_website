@@ -2,13 +2,16 @@
 // Liscenced under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
 // contact - jamsieh@icloud.com | https://github.com/ltblem/
 
-const version = '<b style="color:orange">0.2.2</b>'
-const versionstring = 'the `b****y+++` update.'
-const poptext = '<b style="color: cyan">Updated to 0.2.2.</b> Currently a 10% chance to see custom cats. Also enjoy the <b style="color: pink">fancy text</b>.'
+const version = '<b style="color:lime">v0.3.0</b>'
+const versionstring = '<b style="color:lime">v0.3.0</b>, <b style="color:cyan">the `BINGO` update</b>.'
+const poptext = '<b style="color:lime">Updated to 0.3.0.</b> <b style="color:orange">Press `b` to open bingo!</b>'
+
+const bingolink = 'https://bingobaker.com/#65f35093d64eaa05'
 
 /*
 !     We haven't recieved Br's pics yet, so 0.2.2 was pushed early. Remove this when we get the pics.
 ?     Do we need a better way of storing custom pics?
+TODO: Add a way to see a few of the previous images, if the user wants to see an image they skipped
 TODO: Make the returned image the correct aspect ratio (if possible)
 TODO: Make the helptext at the top of the screen consume the right amount of space, AND/OR...
 TODO: Add toggleable, overlayed buttons and text over image for existing functions 
@@ -19,7 +22,7 @@ const AmountCustomTotal = 54
 // Their filenames are numbered, starting from 0.
 
 //* This is the chance that a `custom` image is shown, even when the `custom` switch is disabled.
-const customChance = 0.1 // 10% chance
+const customChance = 0.05 // 5% chance
 // This is a float between 0 (incl.) and 1 (excl.)
 
 const urlParams = new URLSearchParams(window.location.search); // Setting URL parameters (like /?help=true) into a vaiable
@@ -27,7 +30,7 @@ var stretch;
 var help;
 var custom;
 var customTemp = false;
-const helpstring = 'Press \'s\' to toggle stretch fill, \'h\' to toggle this help message, \'c\' to switch to only custom cats, enter to reload. Running cats.js v' + version + ', ' + versionstring + ' https://github.com/ltblem/cat_webiste/ || ' + poptext;
+const helpstring = 'Keybinds: `<b>s</b>`: stretchfill; `<b>h</b>`: helptext; `<b>c</b>`: custom cats; `<b>enter</b>`: new cat; <b style="color:cyan">`b`: BINGO</b> || Running cats.js ' + versionstring + ' https://github.com/ltblem/cat_webiste/ || ' + poptext;
 
 // Checking the URL parameters and assigning relevant variables to be used later
 if (urlParams.get("stretch") == "true") {
@@ -168,6 +171,9 @@ document.onkeydown = function(e) {
             urlParams.set("custom", "true")
         }
         window.location.replace(window.location.href.split('?')[0] + '?' + urlParams.toString());
+    } else if (e.key == "b" || e.key == "B") {
+        window.open(bingolink, '_blank').focus()
+        console.log('dbg: main: bingo launched, OK')
     }
    
 }
