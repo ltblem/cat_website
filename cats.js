@@ -20,7 +20,7 @@ const AmountCustomTotal = 54
 // Their filenames are numbered, starting from 0.
 
 //* This is the chance that a `custom` image is shown, even when the `custom` switch is disabled.
-const customChance = 0.075 // 7.5% chance
+const customChance = 0.05 // 5% chance
 // This is a float between 0 (incl.) and 1 (excl.)
 
 const urlParams = new URLSearchParams(window.location.search); // Setting URL parameters (like /?help=true) into a vaiable
