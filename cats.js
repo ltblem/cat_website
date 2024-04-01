@@ -2,14 +2,12 @@
 // Liscenced under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
 // contact - jamsieh@icloud.com | https://github.com/ltblem/
 
-const version = '<b style="color:lime">v0.3.0</b>'
-const versionstring = '<b style="color:lime">v0.3.0</b>, <b style="color:cyan">the `BINGO` update</b>.'
-const poptext = '<b style="color:lime">Updated to 0.3.0.</b> <b style="color:orange">Press `b` to open bingo!</b>'
+const versionstring = '<b style="color:lime">v0.3.1</b>, <b style="color:cyan">the `BINGO` update</b>.'
+const poptext = '<b style="color:lime">Updated to 0.3.1.</b> <b style="color:pink">More custom pics, yippee.</b>'
 
 const bingolink = 'https://bingobaker.com/#65f35093d64eaa05'
 
 /*
-!     We haven't recieved Br's pics yet, so 0.2.2 was pushed early. Remove this when we get the pics.
 ?     Do we need a better way of storing custom pics?
 TODO: Add a way to see a few of the previous images, if the user wants to see an image they skipped
 TODO: Make the returned image the correct aspect ratio (if possible)
@@ -18,7 +16,7 @@ TODO: Add toggleable, overlayed buttons and text over image for existing functio
 */
 
 //* This is the amount of `custom` images, change as necessary.
-const AmountCustomTotal = 54
+const AmountCustomTotal = 36
 // Their filenames are numbered, starting from 0.
 
 //* This is the chance that a `custom` image is shown, even when the `custom` switch is disabled.
