@@ -1,11 +1,11 @@
-// cats.js - A LetThereBeLemons creation (part of https://github.com/ltblem/cat_webiste/ or https://cat-website.pages.dev/)
+// cats.js - A LetThereBeLemons creation (part of https://github.com/ltblem/cat_webiste/ at https://cat-website.pages.dev/)
 // Liscenced under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
 // contact - jamsieh@icloud.com | https://github.com/ltblem/
 
-const versionstring = '<b style="color:lime">v0.3.1</b>, <b style="color:cyan">the `BINGO` update</b>.'
-const poptext = '<b style="color:lime">Updated to 0.3.1.</b> <b style="color:pink">More custom pics, yippee.</b>'
+const versionstring = '<b style="color:lime">v0.3.2</b>, <b style="color:cyan">the `BINGO` update</b>.'
+const poptext = '<b style="color:lime">Updated to 0.3.2.</b> <b style="color:yellow">Bingo has been temporarily removed. Because of woke.</b>'
 
-const bingolink = 'https://bingobaker.com/#65f35093d64eaa05'
+const bingolink = 'https://github.com/ltblem/cat_website/issues/7'
 
 /*
 ?     Do we need a better way of storing custom pics?
@@ -28,7 +28,7 @@ var stretch;
 var help;
 var custom;
 var customTemp = false;
-const helpstring = 'Keybinds: `<b>s</b>`: stretchfill; `<b>h</b>`: helptext; `<b>c</b>`: custom cats; `<b>enter</b>`: new cat; <b style="color:cyan">`b`: BINGO</b> || Running cats.js ' + versionstring + ' https://github.com/ltblem/cat_webiste/ || ' + poptext;
+const helpstring = 'Keybinds: `<b>s</b>`: stretchfill; `<b>h</b>`: helptext; `<b>c</b>`: custom cats; `<b>enter</b>`: new cat; <b style="color:cyan"><s>`b`: BINGO</s></b> || Running cats.js ' + versionstring + ' <a href="https://github.com/ltblem/cat_website/" target="_blank">https://github.com/ltblem/cat_website/</a> || ' + poptext;
 
 // Checking the URL parameters and assigning relevant variables to be used later
 if (urlParams.get("stretch") == "true") {
